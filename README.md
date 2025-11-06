@@ -16,3 +16,9 @@ C++部分未使用任何Windows专用特性，因此C++部分很容易在Linux�
 这个程序为可移植性做了大量工作。大量的预定义宏让这个程序同时易于使用msvc/clang/icx编译。gcc只要不使用__attribute__((target_clones())特性，一样易于编译。
 
 下图提供循环测试30轮结果：
+
+我使用基于rocketlake架构的CPU，处理一张15000x11264x24bpp的图片，循环处理30次。
+
+可以看到，编译器版本(flag: -O3 -march=rocketlake)进行30轮循环处理耗时2349ms。手写汇编的版本耗时1518ms。快了54.74%。
+
+![](https://raw.githubusercontent.com/copper187/color24bppto32bpp/refs/heads/main/2025-11-06%20193643.png)
