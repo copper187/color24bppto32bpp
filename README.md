@@ -3,6 +3,8 @@ A finely tuned RGB/BGR to RGBA/BGRA converter use avx2 and avx512-vbmi1
 
 非常快。无论是avx2还是avx512-vbmi1的版本，都能提供稳定高于编译器O3的表现。
 
+另外avx2和avx512-vbmi1是两个完完全全不同的实现。而不是仅仅只扩展宽度。在完成同等规模任务时，avx512-vbmi1的操作要简单得多，指令数亦大幅减少，吞吐量更高。因此，对于支持avx512-vbmi1的CPU，请始终确保你使用了avx512-vbmi1的版本。你可以通过调试器+pdb文件调试确认。
+
 该转换器接受一个24bpp bmp文件，自动添加alpha通道并默认填充0xff，转为32bpp bmp文件之后输出。
 
 使用方法很简单，直接拖放你的24bpp文件到exe上即可。程序会自动重命名并输出32bpp版本。
