@@ -143,9 +143,9 @@ bpp24to32_avx512vbmi1 proc
 	kmovq k1, qword ptr [mask_imm]
 	align 16
 	single_round:		
-		vmovntdqa zmm0, zmmword ptr [rcx]
-		vmovntdqa zmm1, zmmword ptr [rcx + 64]
-		vmovntdqa zmm2, zmmword ptr [rcx + 128]
+		vmovdqa64 zmm0, zmmword ptr [rcx]
+		vmovdqa64 zmm1, zmmword ptr [rcx + 64]
+		vmovdqa64 zmm2, zmmword ptr [rcx + 128]
 		vpermb zmm3, zmm4, zmm0
 		vpermt2b zmm0{k1}{z}, zmm6, zmm1
 		vpermt2b zmm1{k1}{z}, zmm7, zmm2
@@ -170,4 +170,5 @@ bpp24to32_avx512vbmi1 proc
 	vzeroupper
 	ret
 bpp24to32_avx512vbmi1 endp
+
 end
