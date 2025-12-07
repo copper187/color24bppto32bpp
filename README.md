@@ -19,7 +19,9 @@ C++部分未使用任何Windows专用特性，因此C++部分很容易在Linux�
 
 下图提供循环测试30轮结果：
 
-我使用基于rocketlake架构的CPU，处理一张15000x11264x24bpp的图片，循环处理30次。
+设备参考：intel rocketlake microarchitecture CPU，单线程，内存DDR4 2666MHz 19-19-19-43(CL-tRCD-tRP-tRAS) CR2 （很差的内存了），CPU core boost clock 4400MHz，PL1 = 65W PL2 = 224W。
+
+处理目标：处理一张15000x11264x24bpp的图片，循环处理30次。
 
 可以看到，编译器版本(flag: -O3 -march=rocketlake)进行30轮循环处理耗时2349ms。手写汇编的版本耗时1518ms。快了54.74%。
 
