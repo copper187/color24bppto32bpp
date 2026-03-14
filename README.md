@@ -1,6 +1,18 @@
 # color24bppto32bpp
 A finely tuned RGB/BGR to RGBA/BGRA converter use avx2 and avx512-vbmi1
 
+It is very fast both on avx2 and avx512-vbmi1. All implemented can give you faster speed than compiler with O3.
+
+And, the avx2 version and avx512-vbmi1 use completely different algorithm. Not only add the width. The avx512-vbmi1 can use less instructions than avx2 version. We suggest you always use avx512-vbmi1 version if your CPU supports avx512-vbmi1. You can use debugger and pdb file to confirm.
+
+This converter accept a 24bpp bmp file, add alpha channel automatically (fill 0xff by default). then converts the bitmap to 32bpp and outputs.
+
+It easy to use! just drag and drop your 24bpp file to the EXE file directly! This program will rename and write a 32bpp version automatically.
+
+This program, Design for Windows OS. If you want to compile it yourself, If you use VS2022/VS2026, you should can directly build without any edit.
+
+I didn't use any Windows specially function in C++ part. So it should easy to compile on other platforms (eg. Linux). But the asm code is specially design for Windows, if you want use on Linux, you need change the masm syntax to any asm syntax can make Linux accepts. Then **Fix the calling convention** (rcx/rdx/r8/r9 -> rdi/rsi/rdx/rcx/r8/r9).
+
 非常快。无论是avx2还是avx512-vbmi1的版本，都能提供稳定高于编译器O3的表现。
 
 另外avx2和avx512-vbmi1是两个完完全全不同的实现。而不是仅仅只扩展宽度。在完成同等规模任务时，avx512-vbmi1的操作要简单得多，指令数亦大幅减少，吞吐量更高。因此，对于支持avx512-vbmi1的CPU，请始终确保你使用了avx512-vbmi1的版本。你可以通过调试器+pdb文件调试确认。
